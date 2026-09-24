@@ -12,7 +12,8 @@
     "test": "vitest --run",
     "test:watch": "vitest",
     "dev": "node src/main.ts dev",
-    "start": "node src/main.ts start"
+    "start": "node src/main.ts start",
+    "telequick": "node src/telequick-worker.ts"
   },
   "engines": {
     "node": ">=24.0.0",
@@ -30,9 +31,13 @@
     "vitest": "^4.1.4"
   },
   "dependencies": {
-    "@livekit/agents": "^1.6.3",
-    "@livekit/plugins-ai-coustics": "^0.2.14",
-    "@livekit/rtc-node": "^0.13.31",
+    "@telequick/livekit-transport": "^0.1.7",
+    "@fails-components/webtransport": "^1.6.7",
+    "@livekit/agents": "1.6.1",
+    "@livekit/agents-plugin-deepgram": "1.6.1",
+    "@livekit/agents-plugin-openai": "1.6.1",
+    "@livekit/agents-plugin-silero": "1.6.1",
+    "@livekit/rtc-node": "^0.13.33",
     "dotenv": "^17.4.1",
     "zod": "^4.4.3"
   }

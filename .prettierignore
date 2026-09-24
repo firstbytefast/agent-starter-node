@@ -1,2 +1,4 @@
 .agents/
 .claude/
+# Generated brand mirror (mirror-telequick.sh).
+.mirror/

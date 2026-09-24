@@ -223,3 +223,6 @@ ehthumbs.db
 
 # GitHub CLI
 .github/personal-instructions.md
+
+# Generated brand mirror (mirror-telequick.sh) — never hand-edited.
+.mirror/

@@ -53,3 +53,12 @@
 //     result.expect.noMoreEvents();
 //   });
 // });
+// The eval above is commented out upstream, which left this file with no test
+// suite — and vitest FAILS a file that exports none. That failure used to be
+// harmless because nothing else ran; `src/call-stats.test.ts` and
+// `src/thinking-audio.test.ts` now do, so one dead file would fail the whole
+// run. A todo keeps the file a valid suite and keeps the eval one uncomment
+// away.
+import { it } from 'vitest';
+
+it.todo('agent evaluation — uncomment the block above and run `pnpm test`');

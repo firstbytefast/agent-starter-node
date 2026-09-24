@@ -1,4 +1,8 @@
 allowBuilds:
   '@livekit/local-inference': true
+  # true: silero VAD loads its model through onnxruntime-node, whose install
+  # script fetches the native runtime. Left unbuilt, the VAD throws at load —
+  # i.e. after the worker has already registered and taken a call.
+  onnxruntime-node: true
   protobufjs: true
   sharp: true

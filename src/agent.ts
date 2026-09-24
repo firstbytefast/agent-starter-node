@@ -1,4 +1,9 @@
-import { Agent, dedent, inference } from '@livekit/agents';
+import { Agent, dedent } from '@livekit/agents';
+import * as openai from '@livekit/agents-plugin-openai';
+
+// Exported so main.ts can label the token counts it prints with the model
+// that produced them.
+export const LLM_MODEL = 'gpt-4.1-mini';
 
 // Build a custom voice AI assistant with the functional `Agent.create` API
 export function createAgent() {
@@ -38,8 +43,13 @@ export function createAgent() {
       `,
 
     // A Large Language Model (LLM) is your agent's brain, processing user input and generating a response
-    // See all available models at https://docs.livekit.io/agents/models/llm/
-    llm: new inference.LLM({ model: 'google/gemma-4-31b-it' }),
+    //
+    // Upstream uses `inference.LLM`, which routes through LiveKit Inference —
+    // a LiveKit Cloud service. Running over TeleQuick there is no LiveKit
+    // Cloud, so the model comes straight from the provider plugin instead.
+    // This is the same swap the self-hosting guide describes, and the only
+    // change in this file.
+    llm: new openai.LLM({ model: LLM_MODEL }),
 
     // To use a realtime model instead of a voice pipeline, replace the LLM
     // with a RealtimeModel and remove the STT/TTS from the AgentSession
